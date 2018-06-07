@@ -1,16 +1,14 @@
 const dotenv = require('dotenv');
-const fs = require('fs');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
 dotenv.config();
 const app = express();
 const {
-  AUTH_KEY_FILE_PATH,
+  AUTH_KEY,
   APPLE_TEAM_ID,
   MAPKIT_KEY_ID,
 } = process.env;
-const keyFile = fs.readFileSync(AUTH_KEY_FILE_PATH);
 const payload = {
   iss: APPLE_TEAM_ID, /* Issuer: Your Apple Developer Team ID */
   iat: Date.now() / 1000, /* Issued at: Current time in seconds */
@@ -28,7 +26,7 @@ app.get('/token', (req, res, next) => {
   res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
   next();
 }, (req, res) => {
-  res.send(jwt.sign(payload, keyFile, { header }));
+  res.send(jwt.sign(payload, AUTH_KEY, { header }));
 });
 
 app.listen(4000, () => {
