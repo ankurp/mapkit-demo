@@ -8,11 +8,12 @@ const {
   AUTH_KEY,
   APPLE_TEAM_ID,
   MAPKIT_KEY_ID,
+  PORT,
 } = process.env;
 const payload = {
   iss: APPLE_TEAM_ID, /* Issuer: Your Apple Developer Team ID */
   iat: Date.now() / 1000, /* Issued at: Current time in seconds */
-  exp: (Date.now() / 1000) + 1800,
+  exp: (Date.now() / 1000) + 1800, /* Expire at: Time to expire the token */
 };
 const header = {
   kid: MAPKIT_KEY_ID, /* Key Id: Your MapKit JS Key ID */
@@ -29,7 +30,7 @@ app.get('/token', (req, res, next) => {
   res.send(jwt.sign(payload, AUTH_KEY, { header }));
 });
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log('Server started on port 4000');
+  console.log(`Server started on port ${PORT}`);
 });
