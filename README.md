@@ -9,7 +9,6 @@ This is a node js app demonstrating Apple's Map in browser using Mapkit JS.
 
 ## Getting Started
 
-1. Copy the Auth Key file into the project
 1. `cp .env-sample .env`
 1. Fill in environment variables in `.env` file
 1. `npm install`
