@@ -1,0 +1,39 @@
+<html>
+<head>
+  <style>
+    h1 {
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: 300;
+    }
+  </style>
+  <script src="https://cdn.apple-mapkit.com/mk/5.0.x/mapkit.js"></script>
+</head>
+<body>
+  <h1>Apple MapKit JS Demo</h1>
+  <div id="map" style="margin: 0 auto; height: 600px; width: 800px;"></div>
+  <script>
+    mapkit.init({
+      authorizationCallback: (done) => {
+        fetch('/token')
+          .then(res => res.text())
+          .then(token => done(token))
+          .catch(error => {});
+      }
+    });
+    const coordinate = new mapkit.Coordinate(40.473671, -74.422847);
+    const span = new mapkit.CoordinateSpan(1, 1);
+    const region = new mapkit.CoordinateRegion(coordinate, span);
+    const map = new mapkit.Map('map', {
+      region: region,
+      showsUserLocationControl: true,
+      showsScale: mapkit.FeatureVisibility.Visible
+    });
+    const annotation = new mapkit.MarkerAnnotation(coordinate, {
+      title: "Rutgers Garden",
+      subtitle: "Botanical Garden"
+    });
+    map.addAnnotation(annotation);
+  </script>
+</body>
+</html>
