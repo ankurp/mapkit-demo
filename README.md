@@ -1,6 +1,6 @@
 # Apple Mapkit JS Demo App
 
-This is a node js app demonstrating Apple's Map in browser using Mapkit JS.
+This is a node js app demonstrating Apple's Map in browser using Mapkit JS. [View Live](https://mapkit-demo.herokuapp.com)
 
 ## Requirements
 
