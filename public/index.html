@@ -2,59 +2,12 @@
 <head>
   <title>Apple's Mapkit JS Demo App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    html, body {
-      margin: 0;
-    }
-    h1 {
-      text-align: center;
-      font-family: Helvetica, Arial, sans-serif;
-      font-weight: 300;
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translate(-50%, 0);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
-      background-color: rgba(255,255,255,0.7);
-      z-index: 1;
-      padding: 15px;
-      margin: 0;
-      border-radius: 15px;
-      min-width: 300px;
-    }
-    a {
-      text-decoration: none;
-      color: #333;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
   <script src="https://cdn.apple-mapkit.com/mk/5.0.x/mapkit.js"></script>
 </head>
 <body>
   <h1><a href="https://github.com/ankurp/mapkit-demo">Apple MapKit JS Demo</a></h1>
   <div id="map" style="margin: 0 auto; width: 100%;"></div>
-  <script>
-    mapkit.init({
-      authorizationCallback: (done) => {
-        fetch('/token')
-          .then(res => res.text())
-          .then(token => done(token))
-          .catch(error => {});
-      }
-    });
-    const coordinate = new mapkit.Coordinate(40.473671, -74.422847);
-    const span = new mapkit.CoordinateSpan(1, 1);
-    const region = new mapkit.CoordinateRegion(coordinate, span);
-    const map = new mapkit.Map('map', {
-      region: region,
-      showsUserLocationControl: true,
-      showsScale: mapkit.FeatureVisibility.Visible
-    });
-    const annotation = new mapkit.MarkerAnnotation(coordinate, {
-      title: "Rutgers Garden",
-      subtitle: "Botanical Garden"
-    });
-    map.addAnnotation(annotation);
-  </script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
