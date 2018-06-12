@@ -4,7 +4,8 @@
   "description": "App demonstrating Apple's Mapkit JS",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "lint": "eslint ."
   },
   "author": "Ankur Patel <ankur@encoredevlabs.com>",
   "license": "ISC",
